@@ -1,45 +1,52 @@
 #include "lists.h"
+#include <stdio.h>
+
+size_t looped_listint_len(const listint_t *head);
+size_t print_listint_safe(const listint_t *head);
 
 /**
- * Description:reverse_listint - reverses a linked list
- * @head: pointer to the first node in the list
- * Return: pointer to the first node in the new list
+ * looped_listint_len - Counts the number of unique nodes
+ * in a looped listint_t linked list.
+ * @head: A pointer to the head of the listint_t to check.
+ *
+ * Return: If the list is not looped - 0.
+ * Otherwise - the number of unique nodes in the list.
  */
-listint_t *reverse_listint(listint_t **head)
+size_t looped_listint_len(const listint_t *head)
 {
-	const listint_t *one, *two;
+	const listint_t *slow, *fast;
 	size_t nodes = 1;
 
 	if (head == NULL || head->next == NULL)
 		return (0);
 
-	one = head->next;
-	two = (head->next)->next;
+	slow = head->next;
+	fast = (head->next)->next;
 
-	while (two)
+	while (fast)
 	{
-		if (one == two)
+		if (slow == fast)
 		{
-			one = head;
-			while (one != two)
+			slow = head;
+			while (slow != fast)
 			{
 				nodes++;
-				onee = one->next;
-				two = two->next;
+				slow = slow->next;
+				fast = fast->next;
 			}
 
-			one = one->next;
-			while (one != two)
+			slow = slow->next;
+			while (slow != fast)
 			{
 				nodes++;
-				one = two->next;
+				slow = slow->next;
 			}
 
 			return (nodes);
 		}
 
-		one = one->next;
-		two = (hare->next)->next;
+		slow = slow->next;
+		fast = (fast->next)->next;
 	}
 
 	return (0);
