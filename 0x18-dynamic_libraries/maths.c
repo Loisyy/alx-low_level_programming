@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include <stdio.h>
 
 
@@ -58,5 +57,6 @@ int mod(int a, int b)
  */
 int my_div(int a, int b)
 {
-    return (a / b);
+
+	return (a / b);
 }
