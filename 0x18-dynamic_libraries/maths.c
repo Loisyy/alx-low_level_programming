@@ -15,12 +15,12 @@ int add(int a, int b)
 
 
 /**
- * subtract - subtract two integers
+ * sub - subtract two integers
  * @a: first int
  * @b second int
  *return: subtracted 
  */
-int subtract(int a, int b)
+int sub(int a, int b)
 {
 	return (a - b);
 }	
